@@ -3,6 +3,7 @@ package Executor;
 import Data.Commit;
 import Data.CommitChange;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConfVoters {
@@ -88,4 +89,13 @@ public class ConfVoters {
             return 1;
         else return 0;
     }
+
+    public int totChange(ArrayList<Commit> c, String file1, String file2){
+        int tot=0;
+        for(Commit commit : c){
+            tot=tot+(changeCoupling(commit,file1,file2));
+        }
+        return tot;
+    }
+
 }
