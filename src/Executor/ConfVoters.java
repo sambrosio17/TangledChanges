@@ -98,4 +98,8 @@ public class ConfVoters {
         return tot;
     }
 
+    public void foo(){
+
+    }
+
 }
