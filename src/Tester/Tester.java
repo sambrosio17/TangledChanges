@@ -15,6 +15,7 @@ public class Tester {
         DataParser parser = new DataParser("D:\\UNISA\\Tirocinio\\progettini\\historyTest.csv");
 
         parser.builMatrix();
+        parser.buildCouplingMatrix();
 
         /*ArrayList<Commit> c= parser.doParse();
         for(Commit commit : c) System.out.println(commit.toString());

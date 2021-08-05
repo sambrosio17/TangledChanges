@@ -5,9 +5,7 @@ import Data.CommitChange;
 import Data.Couple;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class DataParser {
 
@@ -71,8 +69,7 @@ public class DataParser {
         }
 
 
-
-        PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("noSet.txt", "UTF-8");
 
         LinkedList<Couple> coupleList=new LinkedList<>();
         ConfVoters conf=new ConfVoters();
@@ -91,8 +88,47 @@ public class DataParser {
         }
         writer.close();
         return coupleList;
-
     }
+
+
+    public LinkedList<Couple> buildCouplingMatrix() throws FileNotFoundException, UnsupportedEncodingException {
+        File file=new File(this.filePath);
+        Scanner scn=new Scanner(file);
+
+        Set<String> artifactsSet= new HashSet<>();
+
+        while(scn.hasNext()) {
+            String fullLine = scn.nextLine();
+            String path = fullLine
+                    .split(",")[3].contains(".java") ? fullLine.split(",")[3] : null;
+
+            if (path == null) continue;
+            artifactsSet.add(path);
+        }
+
+            LinkedList<String> artifacts=new LinkedList<>(artifactsSet);
+            PrintWriter writer = new PrintWriter("withSet.txt", "UTF-8");
+
+            LinkedList<Couple> coupleList=new LinkedList<>();
+            ConfVoters conf=new ConfVoters();
+            for(int i=0; i<artifacts.size(); i++){
+                for(int j=0; j<artifacts.size(); j++){
+                    Couple c=new Couple();
+                    c.setPathA(artifacts.get(i));
+                    c.setPathB(artifacts.get(j));
+                    c.setCounter(conf.totChange(doParse(),artifacts.get(i),artifacts.get(j)));
+                    coupleList.add(c);
+
+                    writer.println(c.toString());
+
+
+                }
+            }
+            writer.close();
+            return coupleList;
+
+        }
+
 
 
 
