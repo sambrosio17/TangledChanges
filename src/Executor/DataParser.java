@@ -51,7 +51,7 @@ public class DataParser {
     }
 
 
-    public LinkedList<Couple> builMatrix() throws IOException {
+    public LinkedList<Couple> buildMatrix() throws IOException {
         File file=new File(this.filePath);
         Scanner scn=new Scanner(file);
 

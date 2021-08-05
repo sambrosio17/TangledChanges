@@ -1,12 +1,8 @@
 package Tester;
 
-import Data.Commit;
-import Executor.ConfVoters;
 import Executor.DataParser;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Tester {
 
@@ -14,7 +10,7 @@ public class Tester {
 
         DataParser parser = new DataParser("D:\\UNISA\\Tirocinio\\progettini\\historyTest.csv");
 
-        parser.builMatrix();
+        parser.buildMatrix();
         parser.buildCouplingMatrix();
 
         /*ArrayList<Commit> c= parser.doParse();
