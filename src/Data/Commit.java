@@ -43,6 +43,11 @@ public class Commit implements Serializable {
     }
 
     @Override
+    public boolean equals(Object x){
+        return id.equals(((Commit) x).getId());
+    }
+
+    @Override
     public String toString() {
         return "Commit{" +
                 "id='" + id + '\'' +

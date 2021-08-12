@@ -1,17 +1,24 @@
 package Tester;
 
+import Data.Commit;
 import Executor.DataParser;
+import Executor.Untangler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Tester {
 
     public static void main(String[] args) throws IOException {
 
-        DataParser parser = new DataParser("D:\\UNISA\\Tirocinio\\progettini\\historyTest.csv");
+        DataParser parser = new DataParser("D:\\UNISA\\Tirocinio\\progettini\\testAlgo.csv");
 
-        parser.buildMatrix();
-        parser.buildCouplingMatrix();
+        ArrayList<Commit> list=parser.doParse();
+
+        Untangler u=new Untangler(list.get(0),3);
+
+        System.out.println(u.buildPartitionMatrix());
+        System.out.println(u.findMax());
 
         /*ArrayList<Commit> c= parser.doParse();
         for(Commit commit : c) System.out.println(commit.toString());
