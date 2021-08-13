@@ -2,9 +2,13 @@ package Executor;
 
 import Data.Commit;
 import Data.CommitChange;
+import Data.Partition;
+import Data.PartitionItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class ConfVoters {
 
@@ -98,8 +102,6 @@ public class ConfVoters {
         return tot;
     }
 
-    public void foo(){
 
-    }
 
 }

@@ -6,6 +6,9 @@ import Executor.Untangler;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class Tester {
 
@@ -17,8 +20,9 @@ public class Tester {
 
         Untangler u=new Untangler(list.get(0),3);
 
-        System.out.println(u.buildPartitionMatrix());
-        System.out.println(u.findMax());
+        System.out.println(u.buildPartitionMatrix().size());
+        //System.out.println(u.findMax());
+
 
         /*ArrayList<Commit> c= parser.doParse();
         for(Commit commit : c) System.out.println(commit.toString());

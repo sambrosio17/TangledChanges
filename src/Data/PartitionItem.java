@@ -2,6 +2,7 @@ package Data;
 
 public class PartitionItem {
 
+    boolean active;
     int i,j;
     String pathA,pathB;
     int confidenceValue;
@@ -13,6 +14,7 @@ public class PartitionItem {
         pathA="";
         pathB="";
         confidenceValue=-1;
+        active=true;
 
     }
 
@@ -56,6 +58,14 @@ public class PartitionItem {
         this.confidenceValue = confidenceValue;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public boolean equals(Object x){
 
@@ -67,7 +77,8 @@ public class PartitionItem {
     @Override
     public String toString() {
         return "PartitionItem{" +
-                "i=" + i +
+                "active=" + active +
+                ", i=" + i +
                 ", j=" + j +
                 ", pathA='" + pathA + '\'' +
                 ", pathB='" + pathB + '\'' +

@@ -5,7 +5,9 @@ import Data.Partition;
 import Data.PartitionItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Untangler {
 
@@ -57,4 +59,44 @@ public class Untangler {
 
         return max;
     }
+
+    public int compositeConfVoter(Partition a, Partition b){
+
+        PriorityQueue<Integer> list= new PriorityQueue<>(Collections.reverseOrder());
+
+        for(int i=0; i<a.getList().size(); i++){
+            for(int j=0; j<b.getList().size(); j++){
+                if(pList.get(i).findOne(i,j) == null) continue;
+                list.add(pList.get(i).findOne(i,j).getConfidenceValue());
+            }
+        }
+        return list.poll();
+    }
+
+    public List<Partition> theUntanglingAlgorithm(){
+
+        buildPartitionMatrix();
+        List<Partition> resultPartition=new ArrayList<>();
+        for(int i=0; i<stopCondition; i++){
+            //troviamo il massimo tra tutte le celle della matrice
+            PartitionItem max=findMax();
+            int indexI=max.getI();
+            int indexJ=max.getJ();
+            //disattiviamo le righe corrispondenti agli indici della cella max
+            pList.get(indexI).setActive(false);
+            pList.get(indexJ).setActive(false);
+            //disattivamo tutte le celle che hanno per indice j gli indici della max
+            for(Partition p: pList) {
+                p.deactiveIndex(indexI);
+                p.deactiveIndex(indexJ);
+            }
+            //creiamo una nuova partizione pList.size + 1 che unisce le due precendenti
+            Partition compositePartition= new Partition();
+            compositePartition.setId(pList.size());
+            //aggiungiamo alla partizione creata le partizione che la compongono
+
+        }
+        return  resultPartition;
+    }
+
 }

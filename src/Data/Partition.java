@@ -1,5 +1,7 @@
 package Data;
 
+import com.sun.xml.internal.ws.wsdl.writer.document.Part;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,18 @@ public class Partition {
 
     public void setActive(boolean active) {
         isActive = active;
+        deactiveItem();
+    }
+
+    void deactiveItem(){
+        for(PartitionItem p : list)
+            p.setActive(isActive);
+    }
+
+    public void deactiveIndex(int j){
+        for(PartitionItem p: list){
+            if(p.getJ()==j) p.setActive(false);
+        }
     }
 
     public PartitionItem findMax(){
@@ -54,6 +68,14 @@ public class Partition {
         }
 
         return max;
+    }
+
+    public PartitionItem findOne(int i, int j){
+
+        for(PartitionItem pI : list){
+            if(pI.getJ()==i && pI.getJ()==j) return pI;
+        }
+        return null;
     }
 
     @Override
