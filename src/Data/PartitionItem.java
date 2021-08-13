@@ -57,6 +57,14 @@ public class PartitionItem {
     }
 
     @Override
+    public boolean equals(Object x){
+
+        PartitionItem p=(PartitionItem) x;
+
+        return p.getI()==this.i && p.getJ()==this.j && p.getConfidenceValue()==this.confidenceValue;
+    }
+
+    @Override
     public String toString() {
         return "PartitionItem{" +
                 "i=" + i +
