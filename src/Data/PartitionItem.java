@@ -5,7 +5,7 @@ public class PartitionItem {
     int i,j;
     String pathA,pathB;
     int confidenceValue;
-    boolean isActive;
+
 
     public PartitionItem() {
         i=-1;
@@ -13,7 +13,6 @@ public class PartitionItem {
         pathA="";
         pathB="";
         confidenceValue=-1;
-        isActive=true;
 
     }
 
@@ -57,15 +56,6 @@ public class PartitionItem {
         this.confidenceValue = confidenceValue;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-
     @Override
     public String toString() {
         return "PartitionItem{" +
@@ -74,7 +64,6 @@ public class PartitionItem {
                 ", pathA='" + pathA + '\'' +
                 ", pathB='" + pathB + '\'' +
                 ", confidenceValue=" + confidenceValue +
-                ", isActive=" + isActive +
-                "}\n";
+                '}'+'\n';
     }
 }

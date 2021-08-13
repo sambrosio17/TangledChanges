@@ -7,10 +7,12 @@ public class Partition {
 
     int id;
     List<PartitionItem> list;
+    boolean isActive;
 
     public Partition() {
         id=-1;
         list=new ArrayList<>();
+        isActive=true;
     }
 
     public int getId() {
@@ -27,6 +29,14 @@ public class Partition {
 
     public void setList(List<PartitionItem> list) {
         this.list = list;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public PartitionItem findMax(){
@@ -51,6 +61,7 @@ public class Partition {
         return "Partition{" +
                 "id=" + id +
                 ", list=" + list +
-                "}\n";
+                ", isActive=" + isActive +
+                '}'+'\n';
     }
 }
